@@ -16,10 +16,10 @@ export default function Home() {
             Find, create, and manage events. Connect with artists and bring your concepts to life.
           </p>
           <div className="flex gap-4 justify-center">
-            <Button size="lg" asChild>
+            <Button size="lg" >
               <Link href="/events">Browse Events</Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button size="lg" variant="outline" >
               <Link href="/auth/signup">Get Started</Link>
             </Button>
           </div>

@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import SimpleInput from '@/components/comp-01'
+import ZCOm from '@/components/ui/z'
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -20,6 +20,7 @@ export default function LoginPage() {
   }
 
   return (
+    <div>
     <div className="container mx-auto flex items-center justify-center min-h-[80vh]">
       <Card className="mx-auto max-w-sm">
         <CardHeader>
@@ -57,6 +58,7 @@ export default function LoginPage() {
           </div>
         </CardContent>
       </Card>
+    </div>
     </div>
   )
 }
