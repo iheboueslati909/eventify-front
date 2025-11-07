@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import SimpleInput from '@/components/comp-01'
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)

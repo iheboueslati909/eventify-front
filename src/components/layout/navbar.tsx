@@ -8,6 +8,7 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from '@/components/ui/navigation-menu'
+import ThemeToggle from '../ThemeToggle'
 
 export function Navbar() {
   const pathname = usePathname()
@@ -36,7 +37,8 @@ export function Navbar() {
           </NavigationMenu>
 
           <div className="flex items-center gap-4">
-            <Button variant="outline" asChild>
+            <ThemeToggle></ThemeToggle>
+            <Button asChild>
               <Link href="/auth/login">Login</Link>
             </Button>
             <Button asChild>
