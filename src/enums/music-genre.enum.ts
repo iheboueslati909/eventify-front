@@ -1,0 +1,9 @@
+export enum MusicGenre {
+  TECHNO = 'TECHNO',
+  HOUSE = 'HOUSE',
+  MINIMAL = 'MINIMAL',
+  ELECTRO = 'ELECTRO',
+  TRANCE = 'TRANCE',
+  DRUM_AND_BASS = 'DRUM_AND_BASS',
+  OTHER = 'OTHER'
+}

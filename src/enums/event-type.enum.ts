@@ -1,0 +1,7 @@
+export enum EventType {
+  CONCERT = 'CONCERT',
+  FESTIVAL = 'FESTIVAL',
+  CLUB_NIGHT = 'CLUB_NIGHT',
+  PRIVATE_PARTY = 'PRIVATE_PARTY',
+  OTHER = 'OTHER'
+}
