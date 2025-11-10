@@ -9,6 +9,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from '@/components/ui/sheet'
+import { cn } from '@/lib/utils'
 import {
   Menu,
   Calendar,
@@ -49,13 +50,13 @@ export default function DashboardLayout({
   const pathname = usePathname()
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-background">
       {/* Mobile Sidebar */}
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        <SheetTrigger asChild>
-          <Button variant="outline" size="icon" className="md:hidden fixed top-4 left-4 z-50">
+        <SheetTrigger>
+          <span className="md:hidden fixed top-4 left-4 z-50">
             <Menu className="h-4 w-4" />
-          </Button>
+          </span>
         </SheetTrigger>
         <SheetContent side="left" className="w-64">
           <SidebarContent pathname={pathname} onItemClick={() => setIsOpen(false)} />
@@ -63,7 +64,7 @@ export default function DashboardLayout({
       </Sheet>
 
       {/* Desktop Sidebar */}
-      <div className="hidden md:flex w-64 flex-col fixed inset-y-0 z-50 border-r">
+      <div className=" hidden md:flex w-64 flex-col fixed inset-y-0 z-50  border-r bg-background">
         <SidebarContent pathname={pathname} />
       </div>
 
@@ -112,7 +113,7 @@ function SidebarContent({
         })}
       </nav>
       <div className="p-4 border-t">
-        <Button variant="outline" className="w-full justify-start" asChild>
+        <Button variant="outline" className="w-full justify-start" >
           <Link href="/">
             <LogOut className="h-4 w-4 mr-2" />
             Back to Site
