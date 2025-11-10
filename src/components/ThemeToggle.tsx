@@ -14,21 +14,16 @@ export default function ThemeToggle() {
     setMounted(true)
   }, [])
 
-  if (!mounted) {
-    return (
-      <Toggle variant="outline" className="size-9" aria-label="Toggle theme">
-        <SunIcon size={16} aria-hidden="true" />
-      </Toggle>
-    )
-  }
+  // Always use a consistent default theme for SSR
+  const currentTheme = mounted ? theme : "dark"
 
   return (
     <Toggle
       variant="outline"
       className="group size-9 data-[state=on]:bg-transparent data-[state=on]:hover:bg-muted"
-      pressed={theme === "dark"}
-      onPressedChange={() => setTheme(theme === "dark" ? "light" : "dark")}
-      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      pressed={currentTheme === "dark"}
+      onPressedChange={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
+      aria-label={`Switch to ${currentTheme === "dark" ? "light" : "dark"} mode`}
     >
       <MoonIcon
         size={16}
