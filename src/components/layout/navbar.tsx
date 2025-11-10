@@ -5,9 +5,11 @@ import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import ThemeToggle from '../ThemeToggle'
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from '../ui/navigation-menu'
+import { useAuthContext } from '@/providers/AuthProvider'
 
 export function Navbar() {
   const pathname = usePathname()
+  const { user, logout } = useAuthContext()
 
   return (
     <header className="border-b">
@@ -33,13 +35,22 @@ export function Navbar() {
           </NavigationMenu>
 
           <div className="flex items-center gap-4">
-            <ThemeToggle></ThemeToggle>
-            <Button >
-              <Link href="/auth/login">Login</Link>
-            </Button>
-            <Button >
-              <Link href="/auth/signup">Sign Up</Link>
-            </Button>
+            <ThemeToggle />
+            {user ? (
+              <>
+                <span className="text-sm">{user.email}</span>
+                <Button onClick={() => logout()}>Logout</Button>
+              </>
+            ) : (
+              <>
+                <Button>
+                  <Link href="/auth/login">Login</Link>
+                </Button>
+                <Button>
+                  <Link href="/auth/signup">Sign Up</Link>
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </div>

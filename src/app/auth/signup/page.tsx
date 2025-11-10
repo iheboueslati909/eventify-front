@@ -1,22 +1,12 @@
-'use client'
-
-import { useState } from 'react'
+// Server component
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
-export default function SignUpPage() {
-  const [isLoading, setIsLoading] = useState(false)
-
-  async function onSubmit(event: React.FormEvent) {
-    event.preventDefault()
-    setIsLoading(true)
-    
-    // Handle signup logic here
-    setTimeout(() => setIsLoading(false), 2000)
-  }
+export default async function SignUpPage({ searchParams }: { searchParams?: Promise<{ error?: string }> }) {
+  const resolvedParams = await searchParams
+  const error = resolvedParams?.error ? decodeURIComponent(resolvedParams.error) : null
 
   return (
     <div className="container mx-auto flex items-center justify-center min-h-[80vh]">
@@ -28,28 +18,28 @@ export default function SignUpPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={onSubmit}>
+          {error && (
+            <div className="mb-4 text-sm text-red-600">{error}</div>
+          )}
+          <form action="/api/auth/register" method="post">
             <div className="grid gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="name">Full Name</Label>
-                <Input id="name" placeholder="John Doe" required />
+                <Label htmlFor="firstName">First Name</Label>
+                <Input id="firstName" name="firstName" placeholder="John" required />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="lastName">Last Name</Label>
+                <Input id="lastName" name="lastName" placeholder="Doe" required />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                />
+                <Input id="email" name="email" type="email" placeholder="m@example.com" required />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" required />
+                <Input id="password" name="password" type="password" required />
               </div>
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? 'Creating account...' : 'Create account'}
-              </Button>
+              <button type="submit" className="w-full btn-primary">Create account</button>
             </div>
           </form>
           <div className="mt-4 text-center text-sm">
